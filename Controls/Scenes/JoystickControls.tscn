@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpv8w9k2x3y4z"]
+
+[ext_resource type="Script" path="res://JoystickControls.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bvr8yc6bq3yqa" path="res://icon.svg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(80, 80)
+
+[sub_resource type="StyleBoxFlat" id="JoystickBaseStyle"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.3)
+
+[sub_resource type="StyleBoxFlat" id="JoystickHandleStyle"]
+bg_color = Color(0.8, 0.8, 0.8, 0.8)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="ButtonNormalStyle"]
+bg_color = Color(0.2, 0.2, 0.6, 0.7)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressedStyle"]
+bg_color = Color(0.3, 0.3, 0.8, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="JumpButtonStyle"]
+bg_color = Color(0.6, 0.2, 0.2, 0.7)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.4)
+
+[node name="JoystickControls" type="CanvasLayer" script="ExtResource("1_script")]
+
+[node name="JoystickContainer" type="Control" parent="."]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = -30.0
+
+[node name="JoystickBase" type="ColorRect" parent="JoystickContainer"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+size = Vector2(120, 120)
+color = Color(0.1, 0.1, 0.1, 0.6)
+theme_override_styles/normal = SubResource("JoystickBaseStyle")
+
+[node name="JoystickHandle" type="ColorRect" parent="JoystickContainer/JoystickBase"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.8, 0.8, 0.8, 0.8)
+theme_override_styles/normal = SubResource("JoystickHandleStyle")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -100.0
+offset_right = -30.0
+offset_bottom = -30.0
+alignment = 1
+
+[node name="LeftButton" type="Button" parent="ButtonsContainer"]
+text = "←"
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/normal = SubResource("ButtonNormalStyle")
+theme_override_styles/pressed = SubResource("ButtonPressedStyle")
+theme_override_styles/hover = SubResource("ButtonNormalStyle")
+theme_override_font_sizes/font_size = 20
+
+[node name="RightButton" type="Button" parent="ButtonsContainer"]
+text = "→"
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/normal = SubResource("ButtonNormalStyle")
+theme_override_styles/pressed = SubResource("ButtonPressedStyle")
+theme_override_styles/hover = SubResource("ButtonNormalStyle")
+theme_override_font_sizes/font_size = 20
+
+[node name="JumpButton" type="Button" parent="ButtonsContainer"]
+text = "JUMP"
+custom_minimum_size = Vector2(80, 60)
+theme_override_styles/normal = SubResource("JumpButtonStyle")
+theme_override_styles/pressed = SubResource("ButtonPressedStyle")
+theme_override_styles/hover = SubResource("JumpButtonStyle")
+theme_override_font_sizes/font_size = 14
